@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hello.jdbc.repository.MemberRepositoryV0Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-08T16:27:30" hostname="gangujucBookPro" time="0.113">
+  <properties/>
+  <testcase name="crud()" classname="hello.jdbc.repository.MemberRepositoryV0Test" time="0.113"/>
+  <system-out><![CDATA[01:27:30.616 [Test worker] INFO hello.jdbc.connection.DBConnectionUtil -- get connection=conn0: url=jdbc:h2:tcp://localhost/~/test user=SA, class=class org.h2.jdbc.JdbcConnection
+01:27:30.641 [Test worker] INFO hello.jdbc.connection.DBConnectionUtil -- get connection=conn1: url=jdbc:h2:tcp://localhost/~/test user=SA, class=class org.h2.jdbc.JdbcConnection
+01:27:30.650 [Test worker] INFO hello.jdbc.repository.MemberRepositoryV0Test -- findMember=Member(memberId=memberV6, money=10000)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

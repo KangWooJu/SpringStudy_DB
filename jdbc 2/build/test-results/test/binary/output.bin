@@ -1,0 +1,3 @@
+³01:27:30.616 [Test worker] INFO hello.jdbc.connection.DBConnectionUtil -- get connection=conn0: url=jdbc:h2:tcp://localhost/~/test user=SA, class=class org.h2.jdbc.JdbcConnection
+³01:27:30.641 [Test worker] INFO hello.jdbc.connection.DBConnectionUtil -- get connection=conn1: url=jdbc:h2:tcp://localhost/~/test user=SA, class=class org.h2.jdbc.JdbcConnection
+‚01:27:30.650 [Test worker] INFO hello.jdbc.repository.MemberRepositoryV0Test -- findMember=Member(memberId=memberV6, money=10000)
