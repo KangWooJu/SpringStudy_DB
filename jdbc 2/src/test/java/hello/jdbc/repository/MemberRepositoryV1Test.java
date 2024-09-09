@@ -1,17 +1,37 @@
 package hello.jdbc.repository;
 
+import com.zaxxer.hikari.HikariDataSource;
+import hello.jdbc.connection.ConnectionConst;
 import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
 @Slf4j
-public class MemberRepositoryV0Test {
+public class MemberRepositoryV1Test {
 
-    MemberRepositoryV0 repository = new MemberRepositoryV0();
+    MemberRepositoryV1 repository;
+
+    @BeforeEach
+    void beforeEach(){
+        // 기본 DriverManager - 항상 새로운 커넥션을 획득
+        // DriverManagerDataSource dataSource = new DriverManagerDataSource(ConnectionConst.URL,ConnectionConst.USERNAME,ConnectionConst.PASSWORD);
+
+        // 커넥션 풀링 - Hikari
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(ConnectionConst.URL);
+        dataSource.setUsername(ConnectionConst.USERNAME);
+        dataSource.setPassword(ConnectionConst.PASSWORD);
+
+        repository = new MemberRepositoryV1(dataSource);
+    }
 
     @Test
     void crud() throws SQLException {
@@ -35,5 +55,13 @@ public class MemberRepositoryV0Test {
         Assertions.assertThatThrownBy(()-> repository.findById(member.getMemberId()))
                         .isInstanceOf(NoSuchElementException.class);
 
+        try{
+            Thread.sleep(1000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
+
 }

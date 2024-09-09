@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hello.jdbc.service.MemberServiceV2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-09T16:12:13" hostname="gangujucBookPro" time="0.172">
+  <properties/>
+  <testcase name="정상 이체" classname="hello.jdbc.service.MemberServiceV2Test" time="0.172"/>
+  <system-out><![CDATA[01:12:13.267 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.316 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn0: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.328 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.335 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn1: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.341 [Test worker] INFO  h.jdbc.service.MemberServiceV2Test --
+                START TX
+01:12:13.341 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.352 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.355 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn3: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.360 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                resultSize=1
+01:12:13.361 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.364 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn4: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.365 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                resultSize=1
+01:12:13.366 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.368 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn5: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.369 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                resultSize=1
+01:12:13.371 [Test worker] INFO  hello.jdbc.service.MemberServiceV2 --
+                error
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1422)
+	at org.h2.jdbc.JdbcConnection.setAutoCommit(JdbcConnection.java:437)
+	at hello.jdbc.service.MemberServiceV2.release(MemberServiceV2.java:79)
+	at hello.jdbc.service.MemberServiceV2.accountTransfer(MemberServiceV2.java:47)
+	at hello.jdbc.service.MemberServiceV2Test.accountTransfer(MemberServiceV2Test.java:57)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:121)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+01:12:13.375 [Test worker] INFO  h.jdbc.service.MemberServiceV2Test --
+                END TX
+01:12:13.375 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.379 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn6: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.381 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.384 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn7: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.413 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.416 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn8: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.417 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.420 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn9: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+01:12:13.422 [Test worker] DEBUG o.s.j.d.DriverManagerDataSource --
+                Creating new JDBC DriverManager Connection to [jdbc:h2:tcp://localhost/~/test]
+01:12:13.424 [Test worker] INFO  h.jdbc.repository.MemberRepositoryV2 --
+                get Connection=conn10: url=jdbc:h2:tcp://localhost/~/test user=SA,class = class org.h2.jdbc.JdbcConnection
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
