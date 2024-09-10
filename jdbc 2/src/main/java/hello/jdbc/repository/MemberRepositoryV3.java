@@ -77,38 +77,6 @@ public class MemberRepositoryV3 {
         }
     }
 
-    // 커넥션을 유지하는 경우
-    public Member findById(Connection con,String memberId) throws SQLException{
-        String sql = "select * from member where member_id = ? ";
-
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try{
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,memberId);
-
-            rs = pstmt.executeQuery();
-            //rs.next()를 실행하면 실제 데이터가 존재하는 곳 부터 시작
-            if(rs.next()){
-                Member member = new Member();
-                member.setMemberId(rs.getString("member_id"));
-                member.setMoney(rs.getInt("money"));
-                return member;
-            } else {
-                throw new NoSuchElementException("member not found memberId = " + memberId);
-            }
-
-        } catch (SQLException e){
-            log.error("DB Error",e);
-            throw e;
-        } finally {
-            // connection은 여기서 닫지 않는다.
-            JdbcUtils.closeResultSet(rs);
-            JdbcUtils.closeStatement(pstmt);
-
-        }
-    }
 
     // 업데이트 기능
     public void update(String memberId,int money) throws SQLException {
@@ -134,27 +102,6 @@ public class MemberRepositoryV3 {
         }
     }
 
-    // 커넥션을 유지하는 경우
-    public void update(Connection con,String memberId,int money) throws SQLException {
-        String sql = "update member set money=? where member_id=?";
-
-        PreparedStatement pstmt = null;
-
-        try{
-            pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1,money);
-            pstmt.setString(2,memberId);
-            pstmt.executeUpdate(); // 작성한 Query가 실행된다. -> 데이터 베이스에 저장
-            int resultSize = pstmt.executeUpdate();
-            log.info("resultSize={}",resultSize);
-
-        }catch (SQLException e) {
-            log.error("DB Error",e);
-            throw e;
-        } finally{
-            JdbcUtils.closeStatement(pstmt);
-        }
-    }
 
     // 삭제 기능
     public void delete(String memberId) throws SQLException {
@@ -182,12 +129,13 @@ public class MemberRepositoryV3 {
 
         JdbcUtils.closeResultSet(rs);
         JdbcUtils.closeStatement(stmt);
-        JdbcUtils.closeConnection(con);
+        // 주의! 트랜잭션 동기화를 사용하려면 DataSourceUtils를 사용해야한다.
+        DataSourceUtils.releaseConnection(con,dataSource);
+     //   JdbcUtils.closeConnection(con);
     }
     private Connection getConnection() throws SQLException {
         // 주의 ! 트랜잭션 동기화를 사용하려면 DataSourceUtils를 사용해야 한다.
         Connection con = DataSourceUtils.getConnection(dataSource);
-
         log.info("get Connection={},class = {}",con,con.getClass());
         return con;
     }
