@@ -66,7 +66,7 @@
    - 정리 
 
 
-< 9.9 공부 > ( Commit Reverted 2024-09-14 01:38 , ) 
+< 9.9 공부 > ( Commit Reverted 2024-09-14 01:38 , Recommit 2024-09-14 01:42 ) 
 ∙ 강의 : 김영한 - Spring DB 1/2 <br>
 1) Velog 정리 - [ Spring ] 트랜잭션 추가 및 복습 ( 링크 : https://velog.io/@space1102/Spring-트랜잭션#7--트랜잭션-aop )
    - 스프링에서 트랜잭션 적용하기
