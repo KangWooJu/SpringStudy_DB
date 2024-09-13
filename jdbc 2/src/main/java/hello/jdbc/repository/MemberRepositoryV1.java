@@ -17,11 +17,11 @@ import static hello.jdbc.connection.DBConnectionUtil.getConnection;
 @Slf4j
 public class MemberRepositoryV1 {
 
-    private final DataSource dataSource;
+    private final DataSource dataSource; // DataSource 객체
 
     public MemberRepositoryV1(DataSource dataSource) {
         this.dataSource = dataSource;
-    }
+    }// 생성자를 통해서 DI 실행
 
     public Member save(Member member) throws SQLException{
         String sql = "insert into member(member_id,money) values (?, ?)"; // 넘겨줄 Query를 sql 에 작성

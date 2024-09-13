@@ -26,6 +26,8 @@ public class MemberServiceV3_1 {
     private final MemberRepositoryV3 memberRepository;
 
     // 시작
+    // 파라미터 제거
+    // PlatformTransactionManager 인터페이스의 객체를 받아옴 -> DI가 필요
     public void accountTransfer(String fromId, String toId ,int money) throws SQLException {
 
         // 트랜잭션 시작
@@ -76,6 +78,4 @@ public class MemberServiceV3_1 {
             }
         }
     }
-
-
 }

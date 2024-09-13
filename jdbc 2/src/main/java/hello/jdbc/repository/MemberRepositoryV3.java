@@ -102,7 +102,6 @@ public class MemberRepositoryV3 {
         }
     }
 
-
     // 삭제 기능
     public void delete(String memberId) throws SQLException {
         String sql = "delete from member where member_id=?";
@@ -133,6 +132,8 @@ public class MemberRepositoryV3 {
         DataSourceUtils.releaseConnection(con,dataSource);
      //   JdbcUtils.closeConnection(con);
     }
+
+    // 커넥션을 받아오는 메소드
     private Connection getConnection() throws SQLException {
         // 주의 ! 트랜잭션 동기화를 사용하려면 DataSourceUtils를 사용해야 한다.
         Connection con = DataSourceUtils.getConnection(dataSource);
